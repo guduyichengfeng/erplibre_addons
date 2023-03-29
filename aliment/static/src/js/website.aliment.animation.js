@@ -1,17 +1,17 @@
-odoo.define("demo_website_snippet.animation", function (require) {
+odoo.define("aliment.animation", function (require) {
     "use strict";
 
     let sAnimation = require("website.content.snippets.animation");
 
-    sAnimation.registry.demo_website_snippet = sAnimation.Class.extend({
-        selector: ".o_demo_website_snippet",
+    sAnimation.registry.aliment = sAnimation.Class.extend({
+        selector: ".o_aliment",
 
         start: function () {
             let self = this;
-            this._eventList = this.$(".demo_website_snippet_value");
+            this._eventList = this.$(".aliment_value");
             this._originalContent = this._eventList.text();
             let def = this._rpc({
-                route: "/demo_website_snippet/helloworld",
+                route: "/aliment/liste",
             }).then(function (data) {
                 if (data.error) {
                     return;
@@ -22,7 +22,8 @@ odoo.define("demo_website_snippet.animation", function (require) {
                 }
 
                 self._$loadedContent = $(data);
-                self._eventList.text(data["hello"]);
+                self._eventList.text(data["aliment"]);
+
             });
 
             return $.when(this._super.apply(this, arguments), def);
