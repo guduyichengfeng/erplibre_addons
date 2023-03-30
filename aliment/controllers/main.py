@@ -30,9 +30,12 @@ class AlimentController(http.Controller):
         csrf=False,
     )
     def afficher_liste(self):
+        # aliments = request.env['aliment.aliments'].search([])
+        # names = [a.name for a in aliments]
+        # return {"listes_aliments": names}
         aliments = request.env['aliment.aliments'].search([])
-        names = [a.name for a in aliments]
-        return {"listes_aliments": names}
+        data = [{'id': a.id, 'name': a.name} for a in aliments]  # include the ID of each aliment
+        return {"listes_aliments": data}
 
     @http.route(
         '/creer',
@@ -43,5 +46,15 @@ class AlimentController(http.Controller):
     def ajouterAliment(self, **post):
         http.request.env['aliment.aliments'].sudo().create({'name': post.get('name')})
 
-
+    @http.route(
+        '/modifier',
+        type="json",
+        auth="public",
+        website=True,
+    )
+    def modifierAliment(self, **post):
+        aliment_id = post.get('aliment_id')
+        aliment = request.env['aliment.aliments'].sudo().browse(int(float(aliment_id)))
+        aliment.write({'name': post.get('name')})
+        return self.afficher_liste()
 

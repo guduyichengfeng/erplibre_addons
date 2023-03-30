@@ -30,7 +30,10 @@ odoo.define("aliment.animation", function (require) {
                 // listes_aliments array. The resulting HTML will be added to the div element with the aliment_value class.
                 var list = $("<ul>");
                 _.each(data.listes_aliments, function (item) {
-                    list.append($("<li>").text(item));
+                    var listIem = $("<li>");
+                    var itemText = "(ID: " + item.id + ") " + item.name;
+                    listIem.text(itemText);
+                    list.append(listIem);
                 });
                 self._eventList.html(list);
             });
@@ -46,6 +49,22 @@ odoo.define("aliment.animation", function (require) {
                 }).then(function (result) {
                   // handle the result of the RPC call here
                   //   console.log(result);
+                    location.reload();
+                });
+            });
+
+            $('#form2').on('submit', function (ev) {
+                ev.preventDefault();  // prevent default form submission behavior
+
+                var name = $('#new_name').val(); // get the new name of the aliment
+                var id = $('#aliment_id').val(); // get the ID of the aliment to be modified
+
+                ajax.jsonRpc('/modifier', 'call', {
+                    'name': name,
+                    'aliment_id': id, // pass the ID to the server
+                }).then(function (result) {
+                    // handle the result of the RPC call here
+                    //   console.log(result);
                     location.reload();
                 });
             });

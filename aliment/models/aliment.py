@@ -6,10 +6,4 @@ class Aliments(models.Model):
 
     name = fields.Char()
 
-    pomme = fields.Boolean(string="Pomme demo")
-
-    date_end = fields.Datetime(string="Date end")
-
-    date_start = fields.Datetime(string="Date start")
-
-    empty = fields.Text()
+    id = fields.Id()
