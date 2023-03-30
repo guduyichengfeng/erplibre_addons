@@ -30,7 +30,18 @@ class AlimentController(http.Controller):
         csrf=False,
     )
     def afficher_liste(self):
-        return {"aliment": ["Viandes", "Légumes", "Fruits"]}
+        aliments = request.env['aliment.aliments'].search([])
+        names = [a.name for a in aliments]
+        return {"listes_aliments": names}
+
+    @http.route(
+        '/creer',
+        type="json",
+        auth="public",
+        website=True,
+    )
+    def ajouterAliment(self, **post):
+        http.request.env['aliment.aliments'].sudo().create({'name': post.get('name')})
 
 
 

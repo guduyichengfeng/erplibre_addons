@@ -6,7 +6,13 @@
     <template id="s_aliment" name="Aliments">
         <section class="o_aliment">
             <div class="container">
-                <div class="text-center aliment_value">Aliment</div>
+                <form id="form">
+                    <label for="fname">Name: </label><br/>
+                    <input type="text" name="name" id="name"/>
+                    <button type="submit" id="submit-btn">Submit</button>
+                </form>
+                <h1>Liste des aliments</h1>
+                    <div class="text-center aliment_value">Loading...</div>
             </div>
         </section>
     </template>
