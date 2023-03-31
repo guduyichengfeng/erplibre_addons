@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--Root menu-->
+
+    <menuitem
+        id="aliment_internal"
+        name="Aliment Internal"
+        sequence="20"
+        web_icon="aliment_internal,static/description/icon.png"
+    />
+
+    <!--Sub menu-->
+
+    <menuitem id="menu" name="Menu" sequence="1" parent="aliment_internal" />
+
+    <!--Child menu-->
+
+    <menuitem
+        id="aliment_2_internal"
+        name="Liste aliments"
+        action="aliment_2_internal_aliment_2_internal_action_window"
+        sequence="1"
+        parent="menu"
+    />
+
+<!--    <menuitem-->
+<!--        id="aliment_internal"-->
+<!--        name="Aliment internal"-->
+<!--        action="aliment_internal_aliment_internal_action_window"-->
+<!--        sequence="2"-->
+<!--        parent="menu"-->
+<!--    />-->
+</odoo>

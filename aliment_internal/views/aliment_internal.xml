@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="aliment_internal_view_calendar" model="ir.ui.view">
+        <field name="name">aliment_internal_calendar</field>
+        <field name="model">aliment.internal</field>
+        <field name="arch" type="xml">
+            <calendar color="name" date_start="date_start" string="Aliment internal">
+                <field name="name" />
+                <field name="aliment" />
+                <field name="date_end" />
+                <field name="date_start" />
+                <field name="empty" />
+            </calendar>
+        </field>
+    </record>
+
+    <record id="aliment_internal_view_form" model="ir.ui.view">
+        <field name="name">aliment_internal_form</field>
+        <field name="model">aliment.internal</field>
+        <field name="arch" type="xml">
+            <form string="Titre">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                    </group>
+                    <group>
+                        <field name="aliment" />
+                    </group>
+                    <group>
+                        <field name="date_end" />
+                    </group>
+                    <group>
+                        <field name="date_start" />
+                    </group>
+                    <group>
+                        <field name="empty" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" options="{'post_refresh': 'recipients'}" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="aliment_internal_view_graph" model="ir.ui.view">
+        <field name="name">aliment_internal_graph</field>
+        <field name="model">aliment.internal</field>
+        <field name="arch" type="xml">
+            <graph string="Aliment internal">
+                <field name="name" type="row" />
+                <field name="aliment" type="row" />
+                <field name="date_end" type="row" />
+                <field name="date_start" type="row" />
+                <field name="empty" type="row" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="aliment_internal_view_kanban" model="ir.ui.view">
+        <field name="name">aliment_internal_kanban</field>
+        <field name="model">aliment.internal</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name" />
+                <field name="aliment" />
+                <field name="date_end" />
+                <field name="date_start" />
+                <field name="empty" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="name" />
+                                        </strong>
+                                    </li>
+                                    <li class="text-success float-right mb4" t-if="record.banana.raw_value">
+                                        <i aria-label="Ok" class="fa fa-circle" role="img" title="Ok" />
+                                    </li>
+                                    <li class="text-danger float-right mb4" t-if="!record.banana.raw_value">
+                                        <i aria-label="Invalid" class="fa fa-circle" role="img" title="Invalid" />
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="date_end" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="date_start" />
+                                        </strong>
+                                    </li>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="empty" />
+                                        </strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="aliment_internal_view_pivot" model="ir.ui.view">
+        <field name="name">aliment_internal_pivot</field>
+        <field name="model">aliment.internal</field>
+        <field name="arch" type="xml">
+            <pivot string="Aliment internal">
+                <field name="name" type="row" />
+                <field name="aliment" type="row" />
+                <field name="date_end" type="row" />
+                <field name="date_start" type="row" />
+                <field name="empty" type="row" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="aliment_internal_view_search" model="ir.ui.view">
+        <field name="name">aliment_internal_search</field>
+        <field name="model">aliment.internal</field>
+        <field name="arch" type="xml">
+            <search string="Aliment internal">
+                <filter domain="[('name','!=',False)]" name="name" string="Name" />
+                <filter domain="[('aliment','=',True)]" name="aliment" string="Aliment" />
+                <filter domain="[('date_end','!=',False)]" name="date_end" string="Date end" />
+                <filter domain="[('date_start','!=',False)]" name="date_start" string="Date start" />
+                <filter domain="[('empty','!=',False)]" name="empty" string="Empty" />
+            </search>
+        </field>
+    </record>
+
+    <record id="aliment_internal_view_timeline" model="ir.ui.view">
+        <field name="name">aliment_internal_timeline</field>
+        <field name="model">aliment.internal</field>
+        <field name="arch" type="xml">
+            <timeline
+                date_start="date_start"
+                date_stop="date_end"
+                default_group_by="name"
+                event_open_popup="True"
+                string="Aliment internal"
+            />
+        </field>
+    </record>
+
+    <record id="aliment_internal_view_tree" model="ir.ui.view">
+        <field name="name">aliment_internal_tree</field>
+        <field name="model">aliment.internal</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="aliment" />
+                <field name="date_end" />
+                <field name="date_start" />
+                <field name="empty" />
+            </tree>
+        </field>
+    </record>
+
+    <act_window
+        id="aliment_internal_aliment_internal_action_window"
+        name="Aliment internal"
+        res_model="aliment.internal"
+        view_mode="kanban,tree,timeline,pivot,graph,form,calendar,activity"
+    />
+</odoo>
