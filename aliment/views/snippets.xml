@@ -6,14 +6,14 @@
     <template id="s_aliment" name="Aliments">
         <section class="o_aliment">
             <div class="container">
-                <form id="form">
+                <form id="créer">
                     <label for="fname">Name: </label><br/>
                     <input type="text" name="name" id="name"/>
                     <button type="submit" id="submit-btn">Ajouter</button>
                 </form>
                 <h1>Liste des aliments</h1>
-                <div class="text-center aliment_value">Loading...</div>
-                    <form id="form2" class="form-group">
+                <div class="aliment_value">Loading...</div>
+                    <form id="modifier" class="form-group">
                         <div class="form-group">
                             <label for="name">ID:</label>
                             <input type="number" name="aliment_id" id="aliment_id" class="form-control" />

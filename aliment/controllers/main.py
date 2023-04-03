@@ -38,7 +38,7 @@ class AlimentController(http.Controller):
         return {"listes_aliments": data}
 
     @http.route(
-        '/creer',
+        '/créer',
         type="json",
         auth="public",
         website=True,

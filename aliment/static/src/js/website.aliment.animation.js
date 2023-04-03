@@ -39,12 +39,12 @@ odoo.define("aliment.animation", function (require) {
             });
             var ajax = require('web.ajax');
 
-            $('#form').on('submit', function (ev) {
+            this.$('#créer').on('submit', function (ev) {
                 ev.preventDefault();  // prevent default form submission behavior
 
                 var name = $('#name').val();
 
-                ajax.jsonRpc('/creer', 'call', {
+                ajax.jsonRpc('/créer', 'call', {
                   'name': name,
                 }).then(function (result) {
                   // handle the result of the RPC call here
@@ -52,8 +52,8 @@ odoo.define("aliment.animation", function (require) {
                     location.reload();
                 });
             });
-
-            $('#form2').on('submit', function (ev) {
+            var ajax = require('web.ajax');
+            this.$('#modifier').on('submit', function (ev) {
                 ev.preventDefault();  // prevent default form submission behavior
 
                 var name = $('#new_name').val(); // get the new name of the aliment
@@ -80,3 +80,4 @@ odoo.define("aliment.animation", function (require) {
         },
     });
 });
+
